@@ -1,0 +1,123 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { ui, defaultLang } from '../../i18n/ui';
+import LanguageToggle from '../../components/functional/LanguageToggle';
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'en' } }, { params: { lang: 'id' } }];
+}
+
+const { lang } = Astro.params;
+
+const sections = await getCollection('sections');
+const sortedSections = sections
+  .filter((section) => section.slug.startsWith(`${lang}/`))
+  .sort((a, b) => a.data.order - b.data.order);
+
+import ManifestoHero from '@/components/sections/ManifestoHero.astro';
+import Testimonials from '@/components/sections/Testimonials.astro';
+import FaqAccordion from '@/components/sections/FaqAccordion.astro';
+import FinalClose from '@/components/sections/FinalClose.astro';
+
+const t = (key: keyof (typeof ui)[typeof defaultLang]) =>
+  ui[lang as keyof typeof ui][key] || ui[defaultLang][key];
+
+import SectionCTA from '@/components/ui/SectionCTA.astro';
+---
+
+<Layout title="Parenting Workshop" lang={lang as 'en' | 'id'}>
+  <main class="container mx-auto px-4 py-8">
+    <div class="flex justify-end items-center mb-8">
+      <LanguageToggle
+        currentLang={lang as string}
+        url={Astro.url}
+        client:load
+      />
+    </div>
+
+    {
+      sortedSections.map(async (section, index) => {
+        const { Content } = await section.render();
+        const { component, ...data } = section.data;
+
+        // Render the component
+        const renderedComponent = (() => {
+          switch (component) {
+            case 'hero':
+              return (
+                <ManifestoHero
+                  headline={data.title || 'From Chaos to Calm'}
+                  subhead="The Parenting Shift You've Been Waiting For"
+                  chaosText={data.chaosText || ''}
+                  calmText={data.calmText || ''}
+                  ctaText={data.ctaText || 'Secure Your Spot'}
+                />
+              );
+            case 'testimonials':
+              return data.testimonials ? (
+                <Testimonials testimonials={data.testimonials} />
+              ) : null;
+            case 'faq':
+              return data.faqs ? <FaqAccordion faqs={data.faqs} /> : null;
+            case 'final-close':
+              return (
+                <FinalClose
+                  headline={data.headline || data.title || ''}
+                  bodyText={data.bodyText || ''}
+                  authorImage={data.authorImage}
+                  authorName={data.authorName}
+                  authorTitle={data.authorTitle}
+                  ctaText={data.ctaText}
+                />
+              );
+            case 'prose':
+              return (
+                <article class="prose lg:prose-xl mt-12 book-column animate-on-scroll">
+                  <Content />
+                </article>
+              );
+            default:
+              return null;
+          }
+        })();
+
+        // Logic to inject CTA:
+        // Inject after "Struggle" (02) and "Pivot" (03)
+        // Also after "Hero" (01) is handled by the index 0 check, but we removed that redundancy.
+        // Actually, we want it:
+        // 1. After Struggle (02)
+        // 2. After Pivot (03)
+        // 3. After Solution (04) - maybe?
+
+        const showCTA =
+          component === 'prose' &&
+          (section.slug.includes('struggle') || section.slug.includes('pivot'));
+
+        return (
+          <>
+            {renderedComponent}
+            {showCTA && (
+              <SectionCTA
+                text={
+                  lang === 'id'
+                    ? 'Amankan Slot Anda via WhatsApp'
+                    : 'Secure Your Spot via WhatsApp'
+                }
+                subtext={
+                  section.slug.includes('struggle')
+                    ? lang === 'id'
+                      ? 'Akhiri Drama Ini'
+                      : 'End The Drama'
+                    : lang === 'id'
+                      ? 'Mulai Perubahan'
+                      : 'Start The Shift'
+                }
+              />
+            )}
+          </>
+        );
+      })
+    }
+  </main>
+</Layout>

@@ -21,13 +21,21 @@ export interface SiteConfig {
     linkedin?: string;
   };
   navigation: Omit<NavigationItem, 'icon'>[];
+  whatsapp: {
+    number: string;
+    message: {
+      en: string;
+      id: string;
+    };
+  };
+  gtmId?: string;
 }
 
 export const siteConfig: SiteConfig = {
-  name: 'Astro + shadcn/ui',
+  name: 'Parenting Calm Authority',
   description:
-    'A modern web template built with Astro and shadcn/ui components',
-  url: 'https://astro-shadcn.example.com',
+    'Turn Chaos into Calm: A proven framework for parents to regain authority and peace in the home.',
+  url: 'https://parenting-calm.com',
 
   author: {
     name: 'Your Name',
@@ -47,4 +55,12 @@ export const siteConfig: SiteConfig = {
     { title: 'README', path: '/readme' },
     { title: 'License', path: '/mit-license' },
   ],
+  whatsapp: {
+    number: '+6281234567890', // Placeholder
+    message: {
+      en: "Hi, I'm interested in the Calm Authority workshop and would like to secure my spot.",
+      id: 'Halo, saya tertarik dengan workshop Calm Authority dan ingin mengamankan slot saya.',
+    },
+  },
+  gtmId: 'GTM-XXXXXX', // Placeholder
 };

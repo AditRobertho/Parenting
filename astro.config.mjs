@@ -6,6 +6,9 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://one.ie',
   integrations: [react(), sitemap()],
+  devToolbar: {
+    enabled: false,
+  },
   vite: {
     plugins: [
       tailwindcss({

@@ -1,24 +1,41 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from '@/layouts/Layout.astro';
 import { Button } from '@/components/ui/button';
+import { Home } from 'lucide-react';
+
+// SEO Metadata
+const title = 'Page Not Found - Return to Calm';
+const desc =
+  "The page you are looking for doesn't exist. Let's get you back to the main workshop page.";
 ---
 
-<Layout title="404 - Page Not Found">
+<Layout title={title} desc={desc}>
   <div
-    class="flex flex-col items-center justify-center min-h-[calc(100vh-16rem)] text-center"
+    class="flex flex-col items-center justify-center min-h-[60vh] text-center px-4"
   >
-    <div class="space-y-6 max-w-2xl mx-auto px-4">
-      <h1 class="font-heading text-8xl sm:text-9xl font-bold text-primary">
+    <div class="space-y-6 max-w-md">
+      <!-- 404 Heading -->
+      <h1 class="text-9xl font-serif text-muted-foreground/20 select-none">
         404
       </h1>
-      <h2 class="text-3xl sm:text-4xl font-semibold">Page Not Found</h2>
-      <p class="text-lg text-muted-foreground max-w-md mx-auto">
-        Sorry, we couldn't find the page you're looking for. It might have been
-        moved or deleted.
+
+      <!-- Primary Message -->
+      <h2 class="text-3xl font-serif font-semibold text-foreground">
+        Lost in the Chaos?
+      </h2>
+
+      <p class="text-muted-foreground text-lg">
+        The page you're looking for seems to have wandered off. Let's bring you
+        back to a place of calm.
       </p>
-      <div class="pt-4">
+
+      <!-- Action -->
+      <div class="pt-6">
         <a href="/">
-          <Button size="lg"> Go Home </Button>
+          <Button size="lg" className="gap-2">
+            <Home className="w-4 h-4" />
+            Return to Homepage
+          </Button>
         </a>
       </div>
     </div>

@@ -1,0 +1,123 @@
+---
+interface Props {
+  headline: string;
+  bodyText: string;
+  authorImage?: string;
+  authorName?: string;
+  authorTitle?: string;
+  ctaText?: string;
+}
+
+const {
+  headline,
+  bodyText,
+  authorImage = '/images/author.png',
+  authorName = '',
+  authorTitle = '',
+  ctaText = '',
+} = Astro.props;
+---
+
+<section class="final-close-section py-16 md:py-24 relative">
+  <div class="max-w-4xl mx-auto px-4">
+    <!-- Headline -->
+    <h2
+      class="font-serif text-2xl md:text-4xl font-bold text-primary text-center mb-8 md:mb-12 animate-on-scroll"
+    >
+      {headline}
+    </h2>
+
+    <!-- Content + Author Layout -->
+    <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+      <!-- Text side -->
+      <div
+        class="flex-1 space-y-6 text-center md:text-left animate-on-scroll stagger-1"
+      >
+        <p
+          class="font-sans text-lg md:text-xl text-foreground/80 leading-relaxed"
+        >
+          {bodyText}
+        </p>
+
+        {
+          ctaText && (
+            <div class="pt-2">
+              <a
+                href="#secure-spot"
+                class="cta-button-final inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 text-base font-semibold text-primary-foreground bg-primary rounded-full hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+              >
+                <span class="text-center leading-tight">{ctaText}</span>
+              </a>
+            </div>
+          )
+        }
+      </div>
+
+      <!-- Author photo side -->
+      <div class="shrink-0 animate-on-scroll scale-in stagger-2">
+        <div class="author-photo-wrapper relative">
+          <img
+            src={authorImage}
+            alt={authorName || 'Parenting Coach'}
+            class="author-photo w-48 h-48 md:w-56 md:h-56 object-cover rounded-2xl shadow-xl animate-breathe"
+            loading="lazy"
+          />
+          <!-- Soft decorative ring behind the photo -->
+          <div
+            class="absolute -inset-3 rounded-2xl border border-primary/10 -z-10 animate-float"
+          >
+          </div>
+        </div>
+
+        {
+          authorName && (
+            <div class="text-center mt-4">
+              <p class="font-serif text-lg font-semibold text-foreground">
+                {authorName}
+              </p>
+              {authorTitle && (
+                <p class="text-sm text-muted-foreground">{authorTitle}</p>
+              )}
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-button-final {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-button-final::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.15),
+      transparent
+    );
+    transition: left 0.5s ease;
+  }
+
+  .cta-button-final:hover::after {
+    left: 100%;
+  }
+
+  .author-photo {
+    transition: transform 0.3s ease;
+  }
+
+  .author-photo-wrapper:hover .author-photo {
+    animation-play-state: paused;
+    transform: scale(1.03) rotate(1deg);
+  }
+</style>

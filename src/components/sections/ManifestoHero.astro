@@ -1,0 +1,153 @@
+---
+import { getLangFromUrl, useTranslations } from '@/utils/i18n';
+
+interface Props {
+  headline: string;
+  subhead: string;
+  chaosText: string;
+  calmText: string;
+  ctaText: string;
+}
+
+const { headline, subhead, chaosText, calmText, ctaText } = Astro.props;
+---
+
+<section class="manifesto-hero flex flex-col w-full">
+  <!-- Chaos Zone -->
+  <div
+    class="chaos-zone bg-muted text-muted-foreground p-8 pb-12 flex flex-col items-center justify-center text-center relative"
+  >
+    <!-- Abstract Chaos Texture/Visual Cue -->
+    <div class="absolute inset-0 opacity-10 pointer-events-none">
+      <svg width="100%" height="100%">
+        <filter id="noise">
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.8"
+            numOctaves="3"
+            stitchTiles="stitch"></feTurbulence>
+        </filter>
+        <rect width="100%" height="100%" filter="url(#noise)"></rect>
+      </svg>
+    </div>
+
+    <div class="relative z-10 max-w-md mx-auto">
+      <p class="font-serif text-xl italic mb-4 animate-gentle-pulse">
+        "{chaosText}"
+      </p>
+    </div>
+
+    <!-- Downward Arrow connecting to Calm -->
+    <div
+      class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20"
+    >
+      <div
+        class="w-8 h-8 bg-background rounded-full flex items-center justify-center shadow-sm border border-border animate-bounce-arrow"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"></path></svg
+        >
+      </div>
+    </div>
+  </div>
+
+  <!-- Calm Zone -->
+  <div
+    class="calm-zone relative bg-background text-foreground p-8 pt-12 flex flex-col items-center justify-center text-center overflow-hidden"
+  >
+    <!-- Hero Image Background -->
+    <div class="absolute inset-0 z-0">
+      <img
+        src="/images/hero.png"
+        alt="Calm parenting moment"
+        class="w-full h-full object-cover opacity-40 mix-blend-multiply"
+      />
+      <div
+        class="absolute inset-0 bg-linear-to-b from-background/80 via-background/40 to-background/90"
+      >
+      </div>
+    </div>
+
+    <div class="max-w-xl mx-auto space-y-6 relative z-10">
+      <h1
+        class="font-serif text-3xl md:text-5xl lg:text-6xl font-bold leading-tight text-primary text-balance animate-on-scroll"
+      >
+        {headline}
+      </h1>
+
+      <p
+        class="font-sans text-lg md:text-xl text-muted-foreground leading-relaxed max-w-lg mx-auto text-pretty animate-on-scroll stagger-1"
+      >
+        {subhead}
+      </p>
+
+      <!-- Redesigned quote: open editorial style with decorative glyph -->
+      <div class="py-4 animate-on-scroll stagger-2">
+        <div class="relative max-w-lg mx-auto text-left px-2">
+          <!-- Decorative opening quote mark -->
+          <span
+            class="absolute -top-4 -left-3 md:-left-6 text-6xl md:text-7xl font-serif text-primary/15 leading-none select-none pointer-events-none"
+            aria-hidden="true">&ldquo;</span
+          >
+          <p
+            class="font-serif text-xl md:text-2xl italic text-foreground/70 leading-relaxed pl-4 md:pl-6"
+          >
+            {calmText}
+          </p>
+        </div>
+      </div>
+
+      <div class="pt-4 animate-on-scroll stagger-3">
+        <a
+          href="#secure-spot"
+          class="cta-button inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 text-base font-semibold text-primary-foreground bg-primary rounded-full hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+        >
+          <span class="text-center leading-tight">{ctaText}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .manifesto-hero {
+    /* Ensure it breaks out of standard book column if needed, or stays full width */
+    margin-left: calc(-1 * var(--container-padding, 24px));
+    margin-right: calc(-1 * var(--container-padding, 24px));
+    width: calc(100% + (2 * var(--container-padding, 24px)));
+    max-width: none;
+  }
+
+  .cta-button {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.15),
+      transparent
+    );
+    transition: left 0.5s ease;
+  }
+
+  .cta-button:hover::after {
+    left: 100%;
+  }
+</style>

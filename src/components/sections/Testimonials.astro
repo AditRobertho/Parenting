@@ -1,0 +1,37 @@
+---
+import TrustCard from '@/components/ui/TrustCard.astro';
+
+interface Testimonial {
+  name: string;
+  age: string;
+  quote: string;
+}
+
+interface Props {
+  testimonials: Testimonial[];
+  title?: string;
+}
+
+const { testimonials, title = 'What Parents Are Saying' } = Astro.props;
+---
+
+<section class="py-12 md:py-20 w-full book-column">
+  {
+    title && (
+      <h2 class="text-center font-serif text-3xl md:text-4xl mb-12">{title}</h2>
+    )
+  }
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    {
+      testimonials &&
+        testimonials.map((testimonial) => (
+          <TrustCard
+            name={testimonial.name}
+            age={testimonial.age}
+            quote={testimonial.quote}
+          />
+        ))
+    }
+  </div>
+</section>

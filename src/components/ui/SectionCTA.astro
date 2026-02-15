@@ -1,0 +1,46 @@
+---
+interface Props {
+  text?: string;
+  subtext?: string;
+  href?: string;
+}
+
+const {
+  text = 'Secure Your Spot',
+  subtext = 'Limited spots available for this session',
+  href = '#secure-spot',
+} = Astro.props;
+---
+
+<div
+  class="section-cta py-24 md:py-32 flex flex-col items-center justify-center text-center relative overflow-hidden group"
+>
+  <!-- Decorative background element -->
+  <div
+    class="absolute inset-0 bg-linear-to-b from-transparent via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+  >
+  </div>
+
+  <div class="max-w-md mx-auto space-y-6 relative z-10">
+    {
+      subtext && (
+        <p class="text-sm font-semibold text-primary/80 uppercase tracking-widest animate-fade-in">
+          {subtext}
+        </p>
+      )
+    }
+
+    <a
+      href={href}
+      class="relative inline-flex items-center justify-center px-6 py-4 md:px-10 md:py-5 text-base md:text-lg font-bold text-white bg-primary rounded-full overflow-hidden transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 group-hover:scale-105"
+    >
+      <span class="relative z-10 text-center leading-tight">{text}</span>
+
+      <!-- Button sheen effect -->
+      <div
+        class="absolute inset-0 -translate-x-full group-hover:animate-[shimmer_2s_infinite] bg-linear-to-r from-transparent via-white/20 to-transparent"
+      >
+      </div>
+    </a>
+  </div>
+</div>

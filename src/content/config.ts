@@ -1,30 +1,39 @@
 import { defineCollection, z } from 'astro:content';
 
-// Define the Blog schema
-const BlogSchema = z.object({
-  title: z.string(),
-  description: z.string(),
-  date: z.date(),
-  draft: z.boolean().optional(),
-  image: z.string().optional(),
-  author: z.string().default('ONE'),
-  tags: z.array(z.string()).default([]),
-  category: z
-    .enum(['tutorial', 'news', 'guide', 'review', 'article'])
-    .default('article'),
-  readingTime: z.number().optional(),
-  featured: z.boolean().default(false),
-});
-
-// Define the Blog collection schema
-const blog = defineCollection({
+const sections = defineCollection({
   type: 'content',
-  schema: BlogSchema,
+  schema: z.object({
+    title: z.string().optional(),
+    order: z.number().default(0),
+    chaosText: z.string().optional(),
+    calmText: z.string().optional(),
+    ctaText: z.string().optional(),
+    headline: z.string().optional(),
+    bodyText: z.string().optional(),
+    authorImage: z.string().optional(),
+    authorName: z.string().optional(),
+    authorTitle: z.string().optional(),
+    testimonials: z
+      .array(
+        z.object({
+          name: z.string(),
+          age: z.string(),
+          quote: z.string(),
+        })
+      )
+      .optional(),
+    faqs: z
+      .array(
+        z.object({
+          question: z.string(),
+          answer: z.string(),
+        })
+      )
+      .optional(),
+    component: z.enum(['hero', 'prose', 'testimonials', 'faq', 'final-close']),
+  }),
 });
 
 export const collections = {
-  blog: blog,
+  sections,
 };
-
-// Export the Blog schema type
-export type BlogSchema = z.infer<typeof BlogSchema>;
