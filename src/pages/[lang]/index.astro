@@ -27,15 +27,7 @@ import SectionCTA from '@/components/ui/SectionCTA.astro';
 ---
 
 <Layout title="Parenting Workshop" lang={lang as 'en' | 'id'}>
-  <main class="container mx-auto px-4 py-8">
-    <div class="flex justify-end items-center mb-8">
-      <LanguageToggle
-        currentLang={lang as string}
-        url={Astro.url}
-        client:load
-      />
-    </div>
-
+  <main class="container mx-auto px-4 pb-8">
     {
       sortedSections.map(async (section, index) => {
         const { Content } = await section.render();
@@ -52,6 +44,8 @@ import SectionCTA from '@/components/ui/SectionCTA.astro';
                   chaosText={data.chaosText || ''}
                   calmText={data.calmText || ''}
                   ctaText={data.ctaText || 'Secure Your Spot'}
+                  lang={lang as string}
+                  url={Astro.url}
                 />
               );
             case 'testimonials':

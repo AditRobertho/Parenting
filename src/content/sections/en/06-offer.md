@@ -12,7 +12,7 @@ This is a **LIVE, interactive Workshop**. We do the work, together, in real-time
 
 - **When:** Saturday, February 24th, 2:00 PM - 5:00 PM EST
 - **Where:** Zoom (Link sent via WhatsApp)
-- **Who:** Limited to 20 Parents (Small group for actual coaching)
+- **Who:** Limited to 30 Parents (Small group for actual coaching)
 
 ### What You Will Walk Away With
 
@@ -33,10 +33,10 @@ If you pay, you pay attention.
 
 **But here is the catch:**
 
-Because this is a LIVE session with personal coaching, I can only accept **20 participants**.
+Because this is a LIVE session with personal coaching, I can only accept **30 participants**.
 
 As of this morning, **14 spots are already taken**.
 
-I am not doing this to create false scarcity. I literally cannot coach more than 20 people effectively in 3 hours. Once the spots are gone, registration closes until the summer cohort.
+I am not doing this to create false scarcity. I literally cannot coach more than 30 people effectively in 3 hours. Once the spots are gone, registration closes until the summer cohort.
 
 Do not let another week go by wishing things were different. You have the power to change the tone of your home. It starts with one decision.

@@ -12,7 +12,7 @@ Ini adalah **Workshop LIVE dan interaktif**. Kita akan melakukan pekerjaannya, b
 
 - **Kapan:** Sabtu, 24 Februari, 14:00 - 17:00 WIB
 - **Di mana:** Zoom (Link dikirim via WhatsApp)
-- **Siapa:** Terbatas untuk 20 Orang Tua (Kelompok kecil untuk coaching nyata)
+- **Siapa:** Terbatas untuk 30 Orang Tua (Kelompok kecil untuk coaching nyata)
 
 ### Apa yang Akan Anda Bawa Pulang
 
@@ -25,7 +25,7 @@ Analisis kelumpuhan (analysis paralysis) berakhir di sini. Anda akan pulang deng
 
 ### Mengapa Harga Ini?
 
-Investasinya adalah **Rp 149.000**.
+Investasinya adalah **Rp 2.499.000**.
 
 Saya membuatnya cukup terjangkau sehingga ini adalah keputusan mudah (kurang dari biaya sekali makan malam keluarga di luar), tetapi cukup signifikan sehingga Anda "punya andil" (skin in the game).
 
@@ -33,10 +33,10 @@ Jika Anda membayar, Anda memperhatikan.
 
 **Tapi inilah masalahnya:**
 
-Karena ini adalah sesi LIVE dengan coaching pribadi, saya hanya bisa menerima **20 peserta**.
+Karena ini adalah sesi LIVE dengan coaching pribadi, saya hanya bisa menerima **30 peserta**.
 
 Per pagi ini, **14 slot sudah terisi**.
 
-Saya tidak melakukan ini untuk menciptakan kelangkaan palsu. Saya benar-benar tidak bisa melatih lebih dari 20 orang secara efektif dalam 3 jam. Setelah slot habis, pendaftaran ditutup hingga angkatan musim panas.
+Saya tidak melakukan ini untuk menciptakan kelangkaan palsu. Saya benar-benar tidak bisa melatih lebih dari 30 orang secara efektif dalam 3 jam. Setelah slot habis, pendaftaran ditutup hingga angkatan musim panas.
 
 Jangan biarkan satu minggu lagi berlalu dengan berharap segalanya berbeda. Anda memiliki kekuatan untuk mengubah suasana rumah Anda. Itu dimulai dengan satu keputusan.
